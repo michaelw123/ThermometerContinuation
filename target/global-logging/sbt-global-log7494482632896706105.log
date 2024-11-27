@@ -1,0 +1,12 @@
+[debug] > Exec(all {file:/C:/repo/ThermometerContinuation/}root/products {file:/C:/repo/ThermometerContinuation/}root/test:products, None, None)
+[debug] Evaluating tasks: Compile / products, Test / products
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 3 Scala sources to C:\repo\ThermometerContinuation\target\scala-3.3.4\classes ...
+[warn] -- Warning: C:\repo\ThermometerContinuation\src\main\scala\ThermometerContinuation.scala:144:0 
+[warn] 144 |def test7 = {
+[warn]     |^
+[warn]     |Line is indented too far to the left, or a `}` is missing
+[warn] one warning found
+[info] done compiling
+[success] Total time: 2 s, completed Nov 27, 2024, 7:28:14 a.m.
+[debug] > Exec(idea-shell, None, None)

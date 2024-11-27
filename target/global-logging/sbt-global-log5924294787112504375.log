@@ -1,0 +1,5 @@
+[debug] > Exec(all {file:/C:/repo/ThermometerContinuation/}root/products {file:/C:/repo/ThermometerContinuation/}root/test:products, None, None)
+[debug] Evaluating tasks: Compile / products, Test / products
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[success] Total time: 0 s, completed Nov 27, 2024, 7:28:37 a.m.
+[debug] > Exec(idea-shell, None, None)

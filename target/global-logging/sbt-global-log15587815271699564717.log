@@ -1,0 +1,73 @@
+[debug] > Exec(all {file:/C:/repo/scala3_continuation/}root/products {file:/C:/repo/scala3_continuation/}root/test:products, None, None)
+[debug] Evaluating tasks: Compile / products, Test / products
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 1 Scala source to C:\repo\scala3_continuation\target\scala-3.3.4\classes ...
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:67:33 
+[error] 67 |    val thermometer = Thermometer[Int]()
+[error]    |                      ^^^^^^^^^^^^^^^^
+[error]    |             method apply in object Thermometer does not take parameters
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:77:33 
+[error] 77 |    val thermometer = Thermometer[Int]()
+[error]    |                      ^^^^^^^^^^^^^^^^
+[error]    |             method apply in object Thermometer does not take parameters
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:90:33 
+[error] 90 |    val thermometer = Thermometer[Int]()
+[error]    |                      ^^^^^^^^^^^^^^^^
+[error]    |             method apply in object Thermometer does not take parameters
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:103:33 
+[error] 103 |    val thermometer = Thermometer[Int]()
+[error]     |                      ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:116:33 
+[error] 116 |    val thermometer = Thermometer[Int]()
+[error]     |                      ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:129:33 
+[error] 129 |    val thermometer = Thermometer[Int]()
+[error]     |                      ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:145:31 
+[error] 145 |  val thermometer = Thermometer[Int]()
+[error]     |                    ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:155:34 
+[error] 155 |    val thermometer1 = Thermometer[Int]()
+[error]     |                       ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:156:34 
+[error] 156 |    val thermometer2 = Thermometer[Int]()
+[error]     |                       ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[error] -- [E050] Type Error: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:171:33 
+[error] 171 |    val thermometer = Thermometer[Int]()
+[error]     |                      ^^^^^^^^^^^^^^^^
+[error]     |           method apply in object Thermometer does not take parameters
+[error]     |
+[error]     | longer explanation available when compiling with `-explain`
+[warn] -- Warning: C:\repo\scala3_continuation\src\main\scala\ThermometerContinuation.scala:144:0 
+[warn] 144 |def test7 = {
+[warn]     |^
+[warn]     |Line is indented too far to the left, or a `}` is missing
+[warn] one warning found
+[error] 10 errors found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 1 s, completed Nov 26, 2024, 1:33:54 p.m.
+[debug] > Exec(idea-shell, None, None)

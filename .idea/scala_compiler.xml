@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <parameters>
+      <parameter value="-rewrite" />
+      <parameter value="-source:3.0-migration" />
+    </parameters>
+    <profile name="sbt 1" modules="scala3_continuation" />
+  </component>
+</project>

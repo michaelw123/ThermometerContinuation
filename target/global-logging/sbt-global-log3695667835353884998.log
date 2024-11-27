@@ -1,0 +1,7 @@
+[debug] > Exec(all {file:/C:/repo/scala3_continuation/}root/products {file:/C:/repo/scala3_continuation/}root/test:products, None, None)
+[debug] Evaluating tasks: Compile / products, Test / products
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 2 Scala sources to C:\repo\scala3_continuation\target\scala-3.3.4\classes ...
+[info] done compiling
+[success] Total time: 1 s, completed Nov 20, 2024, 8:27:44 a.m.
+[debug] > Exec(idea-shell, None, None)
