@@ -10,16 +10,15 @@ class Thermometer[A] {
 
 object Thermometer {
   final case class Done[A](value: A) extends Exception
-  inline def apply[A](): Thermometer[A] = new Thermometer[A]()
   def reset[A](func:  () => A)(using theThermometer:Thermometer[A]): A = {
     thermometer(func, List[A | Null]())
   }
 
-  def thermometer[A](func: => () =>A, fn_future: List[A | Null])(using theThermometer:Thermometer[A]): A = {
-    theThermometer.nest.push((theThermometer.cur_expr, theThermometer.past, theThermometer.future))
-    theThermometer.past = List[A]()
-    theThermometer.future = fn_future
-    theThermometer.cur_expr = Option(func)
+  def thermometer[A](func: => () =>A, fn_future: List[A | Null])(using thermo:Thermometer[A]): A = {
+    thermo.nest.push((thermo.cur_expr, thermo.past, thermo.future))
+    thermo.past = List[A]()
+    thermo.future = fn_future
+    thermo.cur_expr = Option(func)
     def run(): A = {
       try {
         func()
@@ -29,29 +28,29 @@ object Thermometer {
     }
 
     val result = run()
-    val x = theThermometer.nest.pop
-    theThermometer.cur_expr = x._1
-    theThermometer.past = x._2
-    theThermometer.future = x._3
+    val x = thermo.nest.pop
+    thermo.cur_expr = x._1
+    thermo.past = x._2
+    thermo.future = x._3
     result
   }
 
-  def shift[A](func: => (A =>A) => A)(using theThermometer:Thermometer[A]): A= {
-    val status = if (theThermometer.future.isEmpty) 1 else {
-      if (theThermometer.future.head == null) 1 else 2
+  def shift[A](func: => (A =>A) => A)(using thermo:Thermometer[A]): A= {
+    val status = if (thermo.future.isEmpty) 1 else {
+      if (thermo.future.head == null) 1 else 2
     }
     status match {
       case 1 =>
-        val new_future = theThermometer.past.reverse
-        val k = (v: A) => thermometer(theThermometer.cur_expr.get, new_future :+ v)
-        theThermometer.past = theThermometer.past :+ null
-        theThermometer.future = if (theThermometer.future.isEmpty) theThermometer.future else theThermometer.future.tail
+        val new_future = thermo.past.reverse
+        val k = (v: A) => thermometer(thermo.cur_expr.get, new_future :+ v)
+        thermo.past = thermo.past :+ null
+        thermo.future = if (thermo.future.isEmpty) thermo.future else thermo.future.tail
         val result = func(k)
         throw Done(result)
       case 2 =>
-        val value = theThermometer.future.head
-        theThermometer.past = theThermometer.past :+ value
-        theThermometer.future = theThermometer.future.tail
+        val value = thermo.future.head
+        thermo.past = thermo.past :+ value
+        thermo.future = thermo.future.tail
         value.asInstanceOf[A]
     }
 
