@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "3.3.4"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "scala3_continuation"
+    name := "ThermometerContinuation"
   )
 
 libraryDependencies += "com.github.rssh" %% "dotty-cps-async" % "0.9.5"
