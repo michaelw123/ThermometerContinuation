@@ -2,30 +2,30 @@ import scala.collection.mutable
 
 
 class Thermometer[A]:
-  var future = List.empty[A | Null]
-  var past = List.empty[A | Null]
+  var future = List.empty[Option[A]]
+  var past = List.empty[Option[A]]
   var curExpr: Option[() =>A] = None
-  var nest: mutable.Stack[(Option[() => A], List[A | Null], List[A | Null])] = mutable.Stack((curExpr, past, future))
+  var nest: mutable.Stack[(Option[() => A], List[Option[A]], List[Option[A]])] = mutable.Stack((curExpr, past, future))
   def popNest(): Unit =
     val x = nest.pop
     curExpr = x._1
     past = x._2
     future = x._3
-  def newFuture(func: =>  () =>A, funcFuture: List[A | Null]): Unit =
+  def newFuture(func: =>  () =>A, funcFuture: List[Option[A]]): Unit =
     nest.push((curExpr, past, future))
-    past = List.empty[A | Null]
+    past = List.empty[Option[A]]
     future = funcFuture
     curExpr = Some(func)
 
-  def pushPast(p:A | Null): Unit =  past = past :+ p
+  def pushPast(p:Option[A]): Unit =  past = past :+ p
 
 object Thermometer:
   final private case class Done[A](value: A) extends Exception
   def reset[A](func:  => A)(using thermo:Thermometer[A]): A = {
-    thermometer(() =>func, List.empty[A | Null])
+    thermometer(() =>func, List.empty[Option[A]])
   }
 
-  private def thermometer[A](func: => () =>A, funcFuture: List[A | Null])(using thermo:Thermometer[A]): A = {
+  private def thermometer[A](func: => () =>A, funcFuture: List[Option[A]])(using thermo:Thermometer[A]): A = {
     thermo.newFuture(func, funcFuture)
     def run(): A = try {
         func()
@@ -40,16 +40,17 @@ object Thermometer:
 
   def shift[A](func: => (A =>A) => A)(using thermo:Thermometer[A]): A= thermo.future match
       case Nil => thermoDone(func)
-      case null :: tail =>
+      case None :: tail =>
         thermo.future = tail
         thermoDone(func)
-      case value :: tail =>
-        thermo.pushPast(value)
-        value.nn
+      case Some(value) :: tail =>
+        thermo.future = tail
+        thermo.pushPast(Some(value))
+        value
 
   private def thermoDone[A](func: => (A =>A) => A)(using thermo:Thermometer[A]): A =
     val newFuture = thermo.past.reverse
     val newExpr = thermo.curExpr.orNull
-    val k = (v: A) => thermometer(newExpr, newFuture :+ v)
-    thermo.pushPast(null)
+    val k = (v: A) => thermometer(newExpr, newFuture :+ Some(v))
+    thermo.pushPast(None)
     throw Done[A](func(k))

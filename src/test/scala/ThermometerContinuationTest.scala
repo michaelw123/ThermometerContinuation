@@ -101,11 +101,13 @@ def test8: Unit = {
 }
 
 def test9: Unit={
-  //2 + ((1 + (2+5)) +6)  = 16
+  //((1 + (2*5)) + 2+6  = 19
   val x = reset {
-    2 *  shift{(k: Int => Int) => 1 +k(5)} + shift{(k: Int => Int) => 2 +k(6)}
+    2 *  shift{(k: Int => Int) => 1 +k(5)}  + shift{(k: Int => Int) => 2 +k(6)}
   }
+
   println(x)
+
 }
 @main def tests:Unit =
   test //11
