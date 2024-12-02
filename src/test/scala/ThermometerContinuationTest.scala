@@ -1,8 +1,8 @@
 import Thermometer.{reset, shift}
-given thermoInstance:Thermometer[Int] = Thermometer[Int]()
+given thermoInstance: Thermometer[Int] = Thermometer[Int]
 
 
-def test = {
+def test:Unit = {
   // 2*5 + 1 = 11
   val x = reset {
     2 * shift { (k: Int => Int) => 1 + k(5)
@@ -11,7 +11,7 @@ def test = {
   println(x)
 }
 
-def test1 = {
+def test1:Unit = {
   // (1+1) * (1+2) * (1+3) = 24
   val x = reset {
     1 + shift{
@@ -21,7 +21,7 @@ def test1 = {
   println(x)
 }
 
-def test3 = {
+def test2: Unit = {
   // 1 + (3*(2+5)) = 22
   val x = 1 + reset {
     2 + shift {
@@ -31,7 +31,7 @@ def test3 = {
   println(x)
 }
 
-def test4 = {
+def test3: Unit = {
   // 1+ 3*(2+10)=37
   val x = 1 + reset {
     2 + shift {
@@ -41,7 +41,7 @@ def test4 = {
   println(x)
 }
 
-def test5 = {
+def test4: Unit = {
   // 2*2*4 = 16
   val x = reset {
     2 * shift {
@@ -51,7 +51,7 @@ def test5 = {
   println(x)
 }
 
-def test6 = {
+def test5: Unit = {
   // (2*3) + (2*5) + (1+4) = 21
   val x = reset {
     1 + shift {
@@ -66,7 +66,8 @@ def test6 = {
   }
   println(x)
 }
-def test7 = {
+def test6: Unit = {
+  //1 + 2*5 = 11
   val x = reset {
     2 * shift { (k: Int => Int) =>
       1 + k(5)
@@ -75,7 +76,7 @@ def test7 = {
   println(x)
 }
 
-def test8 = {
+def test7: Unit = {
   //(1+4) +(2+3) +5 = 15
   val x = reset {
     1 + shift{
@@ -89,7 +90,7 @@ def test8 = {
   }
   println(x)
 }
-def test9 = {
+def test8: Unit = {
   // 1 + (2*5) * (2*6) = 121
   val x = reset {
     2 * shift { (k: Int => Int) =>
@@ -99,13 +100,21 @@ def test9 = {
   println(x)
 }
 
-def test10={
+def test9: Unit={
   //2 + ((1 + (2+5)) +6)  = 16
   val x = reset {
     2 *  shift{(k: Int => Int) => 1 +k(5)} + shift{(k: Int => Int) => 2 +k(6)}
   }
   println(x)
 }
-@main def tests =
-  test8
-  //test1
+@main def tests:Unit =
+  test //11
+  test1 //24
+  test2 //22
+  test3 //37
+  test4 //16
+  test5 //21
+  test6  //11
+  test7  //15
+  test8  //121
+  test9  //19
