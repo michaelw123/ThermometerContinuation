@@ -5,6 +5,6 @@
       <parameter value="-rewrite" />
       <parameter value="-source:3.0-migration" />
     </parameters>
-    <profile name="sbt 1" modules="scala3_continuation" />
+    <profile name="sbt 1" modules="ThermometerContinuation,scala3_continuation" />
   </component>
 </project>

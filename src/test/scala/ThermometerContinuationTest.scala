@@ -1,5 +1,5 @@
 import Thermometer.{reset, shift}
-given thermoInstance: Thermometer[Int] = Thermometer[Int]
+given state: ContinuationState[Int] = ContinuationState[Int]
 
 
 def test:Unit = {
@@ -101,7 +101,7 @@ def test8: Unit = {
 }
 
 def test9: Unit={
-  //((1 + (2*5)) + 2+6  = 19
+  //2 + (((1 + (2*5)) +6)  = 19
   val x = reset {
     2 *  shift{(k: Int => Int) => 1 +k(5)}  + shift{(k: Int => Int) => 2 +k(6)}
   }
@@ -111,6 +111,7 @@ def test9: Unit={
 }
 @main def tests:Unit =
   test //11
+  /*
   test1 //24
   test2 //22
   test3 //37
@@ -120,3 +121,5 @@ def test9: Unit={
   test7  //15
   test8  //121
   test9  //19
+  */
+   

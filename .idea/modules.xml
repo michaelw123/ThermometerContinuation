@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala3_continuation.iml" filepath="$PROJECT_DIR$/.idea/modules/scala3_continuation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala3_continuation.scala3_continuation-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scala3_continuation.scala3_continuation-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThermometerContinuation.iml" filepath="$PROJECT_DIR$/.idea/modules/ThermometerContinuation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThermometerContinuation.ThermometerContinuation-build.iml" filepath="$PROJECT_DIR$/.idea/modules/ThermometerContinuation.ThermometerContinuation-build.iml" />
     </modules>
   </component>
 </project>
