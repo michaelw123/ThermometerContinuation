@@ -1,6 +1,6 @@
 import Thermometer.{reset, shift}
-given IntState: ContinuationState[Int] = ContinuationState[Int]
-given stringState: ContinuationState[String] = ContinuationState[String]
+given state: ContinuationState = new ContinuationState
+
 
 
 def test1:Unit = {
@@ -79,6 +79,14 @@ def test8={
   println(x)
 }
 
+def test9={
+  //Exception
+  val x = reset {
+    2 + shift{(k: Int => Int) => 1} + shift{(k: String => String) => "a" + k("b")}
+  }
+  println(x)
+}
+
 @main def tests:Unit =
   test1 //11
   test2 //24
@@ -88,4 +96,5 @@ def test8={
   test6 //21
   test7 //5
   test8  //bac
+  test9 //Exception
 
